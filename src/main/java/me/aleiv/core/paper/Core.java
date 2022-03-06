@@ -1,13 +1,11 @@
 package me.aleiv.core.paper;
 
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import co.aikar.commands.PaperCommandManager;
 import kr.entree.spigradle.annotations.SpigotPlugin;
 import lombok.Getter;
 import me.aleiv.core.paper.commands.UHC_CMD;
-import me.aleiv.core.paper.listeners.GlobalListener;
 import me.aleiv.core.paper.utilities.NegativeSpaces;
 import me.aleiv.core.paper.utilities.TCT.BukkitTCT;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -17,6 +15,7 @@ import us.jcedeno.libs.rapidinv.RapidInvManager;
 public class Core extends JavaPlugin {
 
     private static @Getter Core instance;
+
     private @Getter Game game;
     private @Getter PaperCommandManager commandManager;
     private @Getter static MiniMessage miniMessage = MiniMessage.get();
@@ -32,14 +31,9 @@ public class Core extends JavaPlugin {
         game = new Game(this);
         game.runTaskTimerAsynchronously(this, 0L, 20L);
 
-        //LISTENERS
+        // COMMANDS
 
-        Bukkit.getPluginManager().registerEvents(new GlobalListener(this), this);
-
-        //COMMANDS
-        
         commandManager = new PaperCommandManager(this);
-
         commandManager.registerCommand(new UHC_CMD(this));
 
     }
