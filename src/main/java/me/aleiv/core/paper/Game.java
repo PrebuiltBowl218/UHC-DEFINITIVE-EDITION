@@ -4,14 +4,12 @@ import java.util.HashMap;
 import java.util.function.Consumer;
 
 import org.bukkit.Bukkit;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import me.aleiv.core.paper.events.GameTickEvent;
 import me.aleiv.core.paper.objects.Timer;
-import us.jcedeno.libs.rapidinv.RapidInv;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
