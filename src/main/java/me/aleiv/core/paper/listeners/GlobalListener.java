@@ -16,9 +16,19 @@ public class GlobalListener implements Listener{
     }
 
     @EventHandler
-    public void onGameTick(GameTickEvent e) {
+    public void gameTickEvent(GameTickEvent e) {
+        var game = instance.getGame();
         Bukkit.getScheduler().runTask(instance, () -> {
-            
+
+            var timer = game.getTimer();
+            if (timer.isActive()) {
+                var currentTime = (int) game.getGameTime();
+                timer.refreshTime(currentTime);
+            }
+
         });
+
     }
+
+    
 }
