@@ -72,7 +72,7 @@ public class Timer {
 
         }
 
-        if (time < -5) {
+        if (time < -1) {
             delete();
             setActive(false);
         }

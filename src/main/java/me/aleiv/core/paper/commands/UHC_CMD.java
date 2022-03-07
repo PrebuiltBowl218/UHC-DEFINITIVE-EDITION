@@ -1,6 +1,5 @@
 package me.aleiv.core.paper.commands;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
 import co.aikar.commands.BaseCommand;
@@ -21,15 +20,24 @@ public class UHC_CMD extends BaseCommand {
 
     }
 
-    @Subcommand("timer")
-    public void setTimer(CommandSender sender, Integer seconds) {
-        var game = instance.getGame();
-        var timer = game.getTimer();
+    @Subcommand("start")
+    public void start(CommandSender sender) {
+        
+    }
 
-        timer.setPreStart(seconds);
-        Bukkit.getScheduler().runTaskLater(instance, task -> {
-            timer.start(seconds, (int) game.getGameTime());
-        }, 20 * 5);
+    @Subcommand("reset")
+    public void reset(CommandSender sender) {
+        
+    }
+
+    @Subcommand("resume")
+    public void resume(CommandSender sender) {
+        
+    }
+
+    @Subcommand("pause")
+    public void pause(CommandSender sender) {
+        
     }
 
 }

@@ -5,6 +5,8 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
 import me.aleiv.core.paper.Core;
+import me.aleiv.core.paper.listeners.ConfigListener;
+import me.aleiv.core.paper.listeners.DefaultListener;
 import me.aleiv.core.paper.listeners.GlobalListener;
 import me.aleiv.core.paper.listeners.GracePeriodListener;
 import me.aleiv.core.paper.listeners.InGameListener;
@@ -20,6 +22,8 @@ public class ListenerManager {
     InGameListener inGameListener;
     LobbyListener lobbyListener;
     StartUpListener startUpListener;
+    ConfigListener configListener;
+    DefaultListener defaultListener;
     
     public ListenerManager(Core instance){
         this.instance = instance;
@@ -29,12 +33,22 @@ public class ListenerManager {
         inGameListener = new InGameListener(instance);
         lobbyListener = new LobbyListener(instance);
         startUpListener = new StartUpListener(instance);
+        configListener = new ConfigListener(instance);
+        defaultListener = new DefaultListener(instance);
+
+        //STATIC
 
         registerListener(globalListener);
-        registerListener(gracePeriodListener);
         registerListener(inGameListener);
-        registerListener(lobbyListener);
         registerListener(startUpListener);
+        registerListener(configListener);
+        registerListener(defaultListener);
+
+        //DINAMIC
+
+        registerListener(gracePeriodListener);
+        registerListener(lobbyListener);
+
     }
 
     public void unregisterListener(Listener listener) {

@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import co.aikar.commands.PaperCommandManager;
 import kr.entree.spigradle.annotations.SpigotPlugin;
 import lombok.Getter;
+import me.aleiv.core.paper.commands.ConfigCMD;
 import me.aleiv.core.paper.commands.UHC_CMD;
 import me.aleiv.core.paper.utilities.NegativeSpaces;
 import me.aleiv.core.paper.utilities.TCT.BukkitTCT;
@@ -35,6 +36,7 @@ public class Core extends JavaPlugin {
 
         commandManager = new PaperCommandManager(this);
         commandManager.registerCommand(new UHC_CMD(this));
+        commandManager.registerCommand(new ConfigCMD(this));
 
     }
 

@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import me.aleiv.core.paper.events.GameTickEvent;
 import me.aleiv.core.paper.manager.EventManager;
 import me.aleiv.core.paper.manager.ListenerManager;
+import me.aleiv.core.paper.manager.PlayerManager;
 import me.aleiv.core.paper.manager.RecipeManager;
 import me.aleiv.core.paper.objects.Timer;
 
@@ -21,16 +22,38 @@ public class Game extends BukkitRunnable {
 
     Timer timer;
 
+    //GAME DATA
     boolean pvp = false;
     GameStage gameStage = GameStage.LOBBY;
-    boolean nether = true;
     double borderSize = 4000;
+
+    
+    //GAME CONFIG 
+    boolean nether = true;
+    double appleRate = 0.80;
+    double flintRate = 3.00;
+    int slots = 60;
+
+    //GAME LOOP
+    int borderTime = 3600;
+    int borderCenterRadius = 200;
+    int borderCenterTime = 1200;
+    int pvpTime = 1200;
+
+    //GAME NERFS & BUFFERS
+
+    boolean beds = true;
+    boolean bedsNerf = true;
+    boolean strength = true;
+    boolean strengthNerf = true;
+    boolean tears = true;
 
     //MANAGER
 
     ListenerManager listenerManager;
     RecipeManager recipeManager;
     EventManager eventManager;
+    PlayerManager playerManager;
     
 
     public Game(Core instance) {
@@ -42,7 +65,7 @@ public class Game extends BukkitRunnable {
         listenerManager = new ListenerManager(instance);
         recipeManager = new RecipeManager(instance);
         eventManager = new EventManager(instance);
-        
+        playerManager = new PlayerManager(instance);
         
     }
 
